@@ -11,7 +11,7 @@ const pool = new Pool({
     connectionString: process.env.DATABASE_URL,
     user: process.env.USERNAME,
     password: process.env.PASSWORD,
-    port: process.env.PORT || 5436,
+    port: process.env.PORT || 5432,
     ssl: {
         rejectUnauthorized: false,
     }
@@ -22,11 +22,16 @@ const pool = new Pool({
 })
 
 app.get('/users', async (req,res) => {
-    const result = await pool.query('SELECT * FROM users');
-    res.json(result.rows);
-})
+    try {
+        const result = await pool.query('SELECT * FROM users');
+        res.json(result.rows);
+    } catch (error) {
+        console.error('Error fetching users', error);
+    res.status(500).json({ error: 'Failed to fetch users' });
+    }
+});
 
-const PORT= process.env.PORT || 5436;
+const PORT= process.env.PORT || 5432;
 
 app.listen(PORT, () => {
   console.log(`Server is running on http://localhost:${PORT}`);
