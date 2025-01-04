@@ -23,7 +23,10 @@ const pool = new Pool({
 
 app.get('/users', async (req,res) => {
     try {
-        const result = await pool.query('SELECT * FROM users');
+        const query = 'SELECT * FROM users';
+        console.log('Executing query:', query);  // Log the query
+        const result = await pool.query(query);
+        console.log('Users fetched:', result.rows); // Log the fetched users
         res.json(result.rows);
     } catch (error) {
         console.error('Error fetching users', error);
