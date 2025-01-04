@@ -1,0 +1,28 @@
+{
+  "name": "disc-backend",
+  "version": "1.0.0",
+  "description": "Your project description",
+  "main": "src/server.js",
+  "scripts": {
+    "test": "none",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/oxz620/ME-N-U-API.git"
+  },
+  "keywords": [
+    "none"
+  ],
+  "author": "me",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/oxz620/ME-N-U-API/issues"
+  },
+  "homepage": "https://github.com/oxz620/ME-N-U-API#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2"
+  }
+}
